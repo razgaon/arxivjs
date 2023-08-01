@@ -1,5 +1,5 @@
 {
-  "name": "arxiv",
+  "name": "arxivjs",
   "version": "0.0.1",
   "main": "dist/client.js",
   "module": "dist/client.esm.js",
