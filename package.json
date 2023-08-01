@@ -1,6 +1,6 @@
 {
   "name": "arxivjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/client.js",
   "module": "dist/client.esm.js",
   "types": "dist/client.d.ts",
