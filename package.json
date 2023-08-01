@@ -1,21 +1,27 @@
 {
   "name": "arxiv",
-  "version": "1.0.0",
-  "main": "index.ts",
+  "version": "0.0.1",
+  "main": "dist/client.js",
+  "module": "dist/client.esm.js",
+  "types": "dist/client.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup src/client.ts --format cjs,esm --dts",
+    "release": "pnpm run build && changeset publish",
+    "lint": "tsc"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": "",
+  "license": "MIT",
+  "description": "A simple arXiv API client",
   "devDependencies": {
     "@types/node": "^20.4.5",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@changesets/cli": "^2.26.2",
     "feedme": "^2.0.2",
-    "jsdom": "^22.1.0"
+    "jsdom": "^22.1.0",
+    "tsup": "^7.1.0"
   }
 }
