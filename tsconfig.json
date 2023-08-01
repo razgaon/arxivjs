@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2019",                          
-    "module": "commonjs",                    
-    "lib": ["ES7", "dom"],                     
-    "allowJs": true,
-    "outDir": "build",                          
-    "rootDir": "src",
-    "strict": false,         
-    "noImplicitAny": false,
+    "target": "es2016",
+    "module": "commonjs",
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
     "resolveJsonModule": true
+
   }
 }
