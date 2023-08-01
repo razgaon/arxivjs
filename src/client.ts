@@ -1,8 +1,6 @@
 import FeedMe from "feedme";
-import fs from "fs";
 import http from "http";
-
-const taxonomyData = JSON.parse(fs.readFileSync("./src/taxonomy.json", "utf8"));
+import { taxonomyData } from "./taxonomy";
 
 export class ArxivClient {
   private static readonly QUERY_URL_FORMAT = `http://export.arxiv.org/api/query?`;

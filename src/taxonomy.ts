@@ -1,4 +1,4 @@
-{
+export const taxonomyData: { [key: string]: string } = {
   "cs.AI": "Artificial Intelligence",
   "cs.AR": "Hardware Architecture",
   "cs.CC": "Computational Complexity",
@@ -153,5 +153,5 @@
   "stat.ME": "Methodology",
   "stat.ML": "Machine Learning",
   "stat.OT": "Other Statistics",
-  "stat.TH": "Statistics Theory"
-}
+  "stat.TH": "Statistics Theory",
+};
