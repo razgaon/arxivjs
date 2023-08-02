@@ -1,7 +1,7 @@
 import FeedMe from "feedme";
 import http from "http";
-import { taxonomyData } from "./taxonomy";
-import { ArticleMetadata } from "./interface";
+import { taxonomyData } from "../taxonomy/taxonomy";
+import { ArticleMetadata } from "../interface";
 
 export class ArxivClient {
   private static readonly QUERY_URL_FORMAT = `http://export.arxiv.org/api/query?`;

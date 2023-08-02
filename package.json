@@ -1,11 +1,11 @@
 {
   "name": "arxivjs",
-  "version": "0.0.3",
-  "main": "dist/client.js",
-  "module": "dist/client.esm.js",
-  "types": "dist/client.d.ts",
+  "version": "0.0.4",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/client.ts --format cjs,esm --dts",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
     "release": "pnpm run build && changeset publish",
     "lint": "tsc"
   },
