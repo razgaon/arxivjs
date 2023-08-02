@@ -63,6 +63,7 @@ export class ArxivClient {
      * url: The article's arXiv URL.
      */
     let id = url.split("/").pop();
+    id = id.split("?")[0]
     id = id.replace(".pdf", "");
 
     return id;
