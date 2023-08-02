@@ -48,6 +48,10 @@ export class ArxivClient {
     return {
       id: item.id,
       title: item.title,
+      year: new Date(item.published).getFullYear(),
+      month: new Date(item.published).toLocaleString("en-US", {
+        month: "long",
+      }),
       authors: this.getAuthors(item.author),
       summary: item.summary,
       journal: item["arxiv:journal_ref"]?.text ?? "None",
@@ -63,7 +67,7 @@ export class ArxivClient {
      * url: The article's arXiv URL.
      */
     let id = url.split("/").pop();
-    id = id.split("?")[0]
+    id = id.split("?")[0];
     id = id.replace(".pdf", "");
 
     return id;
@@ -93,6 +97,7 @@ export class ArxivClient {
 
         parser.on("item", (item) => {
           const x = this.parseItem(item);
+          console.log(x);
           resolve(x);
         });
 
