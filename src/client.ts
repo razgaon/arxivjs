@@ -1,6 +1,7 @@
 import FeedMe from "feedme";
 import http from "http";
 import { taxonomyData } from "./taxonomy";
+import { ArticleMetadata } from "./interface";
 
 export class ArxivClient {
   private static readonly QUERY_URL_FORMAT = `http://export.arxiv.org/api/query?`;
@@ -19,40 +20,39 @@ export class ArxivClient {
     return `${this.constructor.name}(delaySeconds=${this.delaySeconds}, numRetries=${this.numRetries})`;
   }
 
-  private getAuthors(s: Array<any> | any): string {
-    if (Array.isArray(s)) {
-      return s.map((x: any) => x.name).join(", ");
+  private getAuthors(authors: Array<any> | any): string[] {
+    if (Array.isArray(authors)) {
+      return authors.map((x: any) => x.name);
     } else {
-      return s.name;
+      return [authors.name];
     }
   }
 
-  private getCategoryIds(s: Array<any> | any): string {
-    if (Array.isArray(s)) {
-      return s.map((x: any) => x.term).join(", ");
+  private getCategoryIds(categories: Array<any> | any): string[] {
+    if (Array.isArray(categories)) {
+      return categories.map((x: any) => x.term);
     } else {
-      return s.term;
+      return categories.term;
     }
   }
 
-  private getCategoryNames(s: Array<any> | any): string {
-    if (Array.isArray(s)) {
-      return s.map((x: any) => taxonomyData[x.term] ?? "Unknown").join(", ");
+  private getCategoryNames(categories: Array<any> | any): string[] {
+    if (Array.isArray(categories)) {
+      return categories.map((x: any) => taxonomyData[x.term] ?? "Unknown");
     } else {
-      return taxonomyData[s.term];
+      return [taxonomyData[categories.term]];
     }
   }
 
-  private parseItem(item: any): any {
+  private parseItem(item: any): ArticleMetadata {
     return {
       id: item.id,
       title: item.title,
       authors: this.getAuthors(item.author),
       summary: item.summary,
-      journal_ref: item["arxiv:journal_ref"]?.text ?? "None",
-      category_ids: this.getCategoryIds(item["arxiv:primary_category"]),
-      category_names: this.getCategoryNames(item["arxiv:primary_category"]),
-      pdf_link: item.link.filter((x: any) => x.title === "pdf")[0].href,
+      journal: item["arxiv:journal_ref"]?.text ?? "None",
+      categoryNames: this.getCategoryNames(item["arxiv:primary_category"]),
+      pdf: item.link.filter((x: any) => x.title === "pdf")[0].href,
     };
   }
 
@@ -68,7 +68,7 @@ export class ArxivClient {
     return id;
   }
 
-  async getArticle(idOrUrl: string) {
+  async getArticle(idOrUrl: string): Promise<ArticleMetadata> {
     /**
      * Returns a promise that resolves to an object containing the article's metadata.
      *

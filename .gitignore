@@ -3,3 +3,4 @@
 /arxiv
 /build
 dist
+.env
