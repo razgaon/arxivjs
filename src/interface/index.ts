@@ -1,8 +1,7 @@
 export interface ArticleMetadata {
   id: string;
   title: string;
-  year: number;
-  month: string;
+  date: string;
   authors: string[];
   summary: string;
   journal: string;

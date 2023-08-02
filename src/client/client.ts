@@ -48,10 +48,7 @@ export class ArxivClient {
     return {
       id: item.id,
       title: item.title,
-      year: new Date(item.published).getFullYear(),
-      month: new Date(item.published).toLocaleString("en-US", {
-        month: "long",
-      }),
+      date: item.published,
       authors: this.getAuthors(item.author),
       summary: item.summary,
       journal: item["arxiv:journal_ref"]?.text ?? "None",
