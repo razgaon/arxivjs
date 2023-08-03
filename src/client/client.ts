@@ -94,7 +94,6 @@ export class ArxivClient {
 
         parser.on("item", (item) => {
           const x = this.parseItem(item);
-          console.log(x);
           resolve(x);
         });
 
